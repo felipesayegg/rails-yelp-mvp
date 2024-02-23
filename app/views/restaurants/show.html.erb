@@ -1,0 +1,33 @@
+<h1><%= @restaurant.name %></h1>
+<p><%= @restaurant.address %></p>
+<p><%= @restaurant.phone_number %></p>
+<p><%= @restaurant.category %></p>
+
+
+<%= link_to restaurant_path(@restaurant), data: {turbo_method: :delete, turbo_confirm: "Delete #{@restaurant.name}?"} do %>
+  <i class="fa-regular fa-trash-can"> Delete </i>
+<% end %>
+
+<%= link_to edit_restaurant_path(@restaurant), class: 'btn btn-light btn-sm border' do %>
+  <i class="fa fa-pencil"></i> Edit this task
+<% end %>
+
+
+<%= link_to restaurants_path do %>
+  <i class="fa-solid fa-arrow-rotate-left"></i> Back to list
+<% end %>
+
+<%= link_to 'Add new Review', new_restaurant_review_path(@restaurant) %>
+
+<div>
+<h1>Reviews:</h1>
+  <ul>
+    <% @restaurant.reviews.each do |review| %>
+    <li>
+      <%= review.content %>
+      <%= review.rating %>
+      <%= link_to 'Remove', review_path(review), data: {turbo_method: :delete} %>
+    </li>
+    <% end %>
+  </ul>
+</div>

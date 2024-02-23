@@ -1,0 +1,11 @@
+<ul>
+  <% @restaurants.each do |restaurant| %>
+    <li><%= link_to restaurant.name, restaurant_path(restaurant) %> </li>
+
+  <% end %>
+</ul>
+
+
+<%= link_to new_restaurant_path do %>
+  <i class="fa-solid fa-plus"></i> Add a new Restaurant
+<% end %>
